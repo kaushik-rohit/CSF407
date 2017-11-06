@@ -18,7 +18,7 @@ To be updated.
 ### **Installating on Ubuntu Using Script**
 ```bash
 chmod +x install.sh
-./install.sh
+sudo ./install.sh
 source ENV/bin/activate
 python example.py # Test if installation was successfull
 ```
