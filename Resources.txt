@@ -1,0 +1,12 @@
+Blog for Ping Pong
+http://karpathy.github.io/2016/05/31/rl/
+
+Introduction to openAiGym and Reinforcement Learning
+https://www.oreilly.com/learning/introduction-to-reinforcement-learning-and-openai-gym
+
+David Silver - Reinforcement Learning
+http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html
+
+Introduction to Neural Networks
+http://karpathy.github.io/neuralnets/
+
