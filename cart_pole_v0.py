@@ -7,6 +7,7 @@ from keras.layers import Dense
 from keras.optimizers import Adam
 from keras.models import load_model
 import time as tm
+import os
 
 EPISODES = 1000
 
@@ -67,8 +68,9 @@ if __name__ == "__main__":
     state_size = env.observation_space.shape[0]
     action_size = env.action_space.n
     agent = DQNAgent(state_size, action_size)
-    if os.path.isfile("./save/cartpole-dqn.h5"):
-        agent.load("./save/cartpole-dqn.h5")
+    
+    if os.path.isfile("./save/cartpole.h5"):
+        agent.load("./save/cartpole.h5")
 
     done = False
     batch_size = 32
@@ -78,7 +80,7 @@ if __name__ == "__main__":
         state = np.reshape(state, [1, state_size])
         for time in range(500):
             env.render()
-            tm.sleep(0.05)
+            #tm.sleep(0.05)
             action = agent.act(state)
             next_state, reward, done, _ = env.step(action)
             reward = reward if not done else -10
@@ -91,3 +93,4 @@ if __name__ == "__main__":
                 break
         if len(agent.memory) > batch_size:
             agent.replay(batch_size)
+    agent.save("./save/cartpole.h5")
