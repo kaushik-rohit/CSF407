@@ -5,6 +5,7 @@ from collections import deque
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.optimizers import Adam
+from keras.models import load_model
 import time as tm
 
 EPISODES = 1000
@@ -55,10 +56,10 @@ class DQNAgent:
             self.epsilon *= self.epsilon_decay
 
     def load(self, name):
-        self.model.load_weights(name)
+        self.model = load_model(name)
 
     def save(self, name):
-        self.model.save_weights(name)
+        self.model.save(name)
 
 
 if __name__ == "__main__":
@@ -66,7 +67,9 @@ if __name__ == "__main__":
     state_size = env.observation_space.shape[0]
     action_size = env.action_space.n
     agent = DQNAgent(state_size, action_size)
-    # agent.load("./save/cartpole-dqn.h5")
+    if os.path.isfile("./save/cartpole-dqn.h5"):
+        agent.load("./save/cartpole-dqn.h5")
+
     done = False
     batch_size = 32
 
