@@ -5,6 +5,7 @@ from collections import deque
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.optimizers import Adam
+import time as tm
 
 EPISODES = 1000
 
@@ -74,6 +75,7 @@ if __name__ == "__main__":
         state = np.reshape(state, [1, state_size])
         for time in range(500):
             env.render()
+            tm.sleep(0.05)
             action = agent.act(state)
             next_state, reward, done, _ = env.step(action)
             reward = reward if not done else -10
